@@ -1,21 +1,34 @@
-// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
+enum class Nivel { BASICO, INTERMEDIARIO, AVANCADO }
 
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
-class Usuario
+class Usuario(val nome: String, val email: String, var senha: String, val nivelAluno: Nivel)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+data class Curso(var nome: String, val duracao: Int = 60)
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+data class Formacao(val nome: String, val nivelDificuldade: Nivel, var curso: List<Conteudo>) {
 
-    val inscritos = mutableListOf<Usuario>()
-    
-    fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-    }
+  val inscritos = mutableListOf<Usuario>()
+
+  fun matricular(usuario: Usuario) {
+    inscritos.add(usuario)
+  }
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+
+  val usuario1 = Usuario("João",   "joaoxxiii@gmail.com", "!@#456",    Nivel.AVANCADO)
+  val usuario2 = Usuario("José",   "maria321@gmail.com",  "qweasd123", Nivel.DIFICIL)
+  val usuario3 = Usuario("Marcos", "marcos@gmail.com",    "1qazxwsd",  Nivel.BASICO)
+
+  val curso1 = Conteudo("Introdução à programação")
+  val curso2 = Conteudo("Programaçao Orientada a Objeto I")
+  val curso3 = Conteudo("Programaçao Orientada a Objeto II")
+
+  val formacao1 = Formacao("$curso1", Nivel.BASICO, listOf(curso1, curso2, curso3))
+
+  formacao1.matricular(usuario1)
+  formacao1.matricular(usuario2)
+  formacao1.matricular(usuario3)
+
+  }
 }
