@@ -29,6 +29,7 @@ fun main() {
   formacao1.matricular(usuario1)
   formacao1.matricular(usuario2)
   formacao1.matricular(usuario3)
+  println("inscritos no ${formacao1.nome}:")
 
   }
 }
